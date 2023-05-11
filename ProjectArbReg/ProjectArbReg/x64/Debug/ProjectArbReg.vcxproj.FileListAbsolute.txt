@@ -1,0 +1,5 @@
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.vcxproj.AssemblyReference.cache
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.vcxproj.SuggestedBindingRedirects.cache
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.mainForm.resources
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.vcxproj.GenerateResource.cache
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.AdminRegForm.resources

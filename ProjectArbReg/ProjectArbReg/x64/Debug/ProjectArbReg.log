@@ -1,0 +1,7 @@
+﻿  AdminRegForm.cpp
+  Programm.cpp
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\Programm.cpp(7,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  mainForm.cpp
+  Generating Code...
+  AdminRegForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  ProjectArbReg.vcxproj -> C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\x64\Debug\ProjectArbReg.exe
