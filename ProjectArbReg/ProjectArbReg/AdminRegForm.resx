@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 122</value>
+    <value>55, 56</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 33</value>
+    <value>79, 26</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -144,13 +144,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 179</value>
+    <value>42, 124</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 26</value>
@@ -171,10 +171,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="tb1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 119</value>
+    <value>173, 56</value>
   </data>
   <data name="tb1.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 34</value>
@@ -192,10 +192,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="tb2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 179</value>
+    <value>173, 116</value>
+  </data>
+  <data name="tb2.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
   </data>
   <data name="tb2.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 34</value>
@@ -213,10 +216,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tb2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="btn_register.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 270</value>
+    <value>173, 191</value>
   </data>
   <data name="btn_register.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 47</value>
@@ -237,6 +240,54 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btn_register.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btn_back.Location" type="System.Drawing.Point, System.Drawing">
+    <value>289, 262</value>
+  </data>
+  <data name="btn_back.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 40</value>
+  </data>
+  <data name="btn_back.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btn_back.Text" xml:space="preserve">
+    <value>back</value>
+  </data>
+  <data name="&gt;&gt;btn_back.Name" xml:space="preserve">
+    <value>btn_back</value>
+  </data>
+  <data name="&gt;&gt;btn_back.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_back.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_back.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btn_eraseadmin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 259</value>
+  </data>
+  <data name="btn_eraseadmin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 43</value>
+  </data>
+  <data name="btn_eraseadmin.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btn_eraseadmin.Text" xml:space="preserve">
+    <value>erase Admin</value>
+  </data>
+  <data name="&gt;&gt;btn_eraseadmin.Name" xml:space="preserve">
+    <value>btn_eraseadmin</value>
+  </data>
+  <data name="&gt;&gt;btn_eraseadmin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_eraseadmin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btn_eraseadmin.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -246,7 +297,7 @@
     <value>13, 26</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>577, 536</value>
+    <value>476, 350</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 13.8pt</value>

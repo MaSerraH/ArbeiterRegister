@@ -1,3 +1,4 @@
+  ProjectArbReg.AdminLogForm.resources - Embedded, ContainedInManifestFile, 
   ProjectArbReg.AdminRegForm.resources - Embedded, ContainedInManifestFile, 
   ProjectArbReg.mainForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -15,11 +16,20 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class ProjectArbReg.AdminLogForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean back_ToMain : Public
 Class ProjectArbReg.AdminRegForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Admin admin : Public
+    Boolean back_toMain : Public
 Class ProjectArbReg.mainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean To_adminRegForm : Public
+    Boolean To_adminLogForm : Public

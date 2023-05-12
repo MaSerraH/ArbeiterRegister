@@ -18,8 +18,20 @@ void main(array<String^>^ args)
 		{
 			ProjectArbReg::AdminRegForm adminRegForm;
 			adminRegForm.ShowDialog();
+			if (adminRegForm.back_toMain)
+			{
+				continue;
+			}
 		}
-
+		if (mainform.To_adminLogForm)
+		{
+			ProjectArbReg::AdminLogForm adminLogForm;
+			adminLogForm.ShowDialog(); 
+			if (adminLogForm.back_ToMain)
+			{
+				continue;
+			}
+		}
 
 
 

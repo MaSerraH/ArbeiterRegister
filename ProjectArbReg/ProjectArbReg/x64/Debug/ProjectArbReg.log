@@ -1,7 +1,12 @@
 ﻿  AdminRegForm.cpp
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\AdminRegForm.h(129,23): warning C4677: 'admin': signature of non-private member contains assembly private type 'Admin'
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\Admin.h(3,11): message : see declaration of 'Admin'
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\AdminRegForm.h(151,21): warning C4101: 'ex': unreferenced local variable
   Programm.cpp
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\AdminRegForm.h(129,23): warning C4677: 'admin': signature of non-private member contains assembly private type 'Admin'
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\Admin.h(3,11): message : see declaration of 'Admin'
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\AdminRegForm.h(151,21): warning C4101: 'ex': unreferenced local variable
 C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\Programm.cpp(7,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  mainForm.cpp
   Generating Code...
-  AdminRegForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  Admin.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   ProjectArbReg.vcxproj -> C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\x64\Debug\ProjectArbReg.exe

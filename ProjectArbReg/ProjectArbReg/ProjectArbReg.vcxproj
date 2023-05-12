@@ -114,6 +114,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="AdminLogForm.cpp" />
     <ClCompile Include="AdminRegForm.cpp" />
     <ClCompile Include="mainForm.cpp" />
     <ClCompile Include="Programm.cpp" />
@@ -126,6 +128,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="AdminLogForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AdminRegForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -135,6 +141,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminLogForm.resx">
+      <DependentUpon>AdminLogForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminRegForm.resx">
       <DependentUpon>AdminRegForm.h</DependentUpon>
     </EmbeddedResource>
