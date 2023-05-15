@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Admin.h"
 namespace ProjectArbReg {
 
 	using namespace System;
@@ -48,7 +48,7 @@ namespace ProjectArbReg {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -94,12 +94,13 @@ namespace ProjectArbReg {
 			// 
 			this->tbpass->Location = System::Drawing::Point(205, 138);
 			this->tbpass->Name = L"tbpass";
+			this->tbpass->PasswordChar = '$';
 			this->tbpass->Size = System::Drawing::Size(217, 34);
 			this->tbpass->TabIndex = 3;
 			// 
 			// btn_back
 			// 
-			this->btn_back->Location = System::Drawing::Point(114, 286);
+			this->btn_back->Location = System::Drawing::Point(274, 205);
 			this->btn_back->Name = L"btn_back";
 			this->btn_back->Size = System::Drawing::Size(95, 47);
 			this->btn_back->TabIndex = 4;
@@ -109,7 +110,7 @@ namespace ProjectArbReg {
 			// 
 			// btn_login
 			// 
-			this->btn_login->Location = System::Drawing::Point(237, 215);
+			this->btn_login->Location = System::Drawing::Point(90, 203);
 			this->btn_login->Name = L"btn_login";
 			this->btn_login->Size = System::Drawing::Size(119, 49);
 			this->btn_login->TabIndex = 5;
@@ -121,7 +122,7 @@ namespace ProjectArbReg {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(13, 26);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(518, 487);
+			this->ClientSize = System::Drawing::Size(451, 297);
 			this->Controls->Add(this->btn_login);
 			this->Controls->Add(this->btn_back);
 			this->Controls->Add(this->tbpass);
@@ -144,12 +145,66 @@ namespace ProjectArbReg {
 		this->back_ToMain = true;
 		this->Close();
 	}
-private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: void Reset()
-{
-	this->tbName->Text = "";
-	this->tbpass->Text = "";
-}
-};
+	public: Admin^ admin = nullptr;
+	public: bool back_ToLogin = false;
+	private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ name = tbName->Text;
+		String^ passwort = tbpass->Text;
+		//	int id;
+		if (name->Length == 0 || passwort->Length == 0)
+		{
+			MessageBox::Show("the Fieds Name and Password are empty!", "please write something in", MessageBoxButtons::OK);
+			return;
+		}
+
+		try
+		{
+			sqlconn->Open();
+			String^ query = "declare @pass nvarchar(20) set @pass = convert(nvarchar(32), HashBytes('MD5', '" + passwort + "'), 2) select * from adminLogin where Name = '" + name + "' and Passwort = @pass";
+			SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+			SqlDataReader^ reader = cmd->ExecuteReader();
+
+			if (reader->Read())
+			{
+				admin = gcnew Admin;
+				//admin->id = reader->GetInt16(0);
+				//if (admin->id>=1)
+				//{
+				//	MessageBox::Show("there´s already an admin registered", "login-Failure", MessageBoxButtons::OK);
+				//	return;
+				//}
+				//else
+				//{
+				admin->name = reader->GetString(1);
+				admin->passwort = reader->GetString(2);
+				//}
+				this->Close();
+			}
+			else
+			{
+				MessageBox::Show("the User " + name + " doesn´t exist!", "Error", MessageBoxButtons::OK);
+				Reset();
+				this->back_ToLogin = true;
+
+			}
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			Application::Exit();
+
+		}
+		finally
+		{
+			sqlconn->Close();
+			this->Close();
+		}
+	}
+	private: void Reset()
+	{
+		this->tbName->Text = "";
+		this->tbpass->Text = "";
+	}
+	};
 }

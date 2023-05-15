@@ -126,7 +126,7 @@ namespace ProjectArbReg {
 
 		}
 #pragma endregion
-	public: Admin^ admin = nullptr;
+	//public: Admin^ admin = nullptr;
 	public: bool back_toMain = false;
 	private: System::Void btn_register_Click(System::Object^ sender, System::EventArgs^ e) {
 

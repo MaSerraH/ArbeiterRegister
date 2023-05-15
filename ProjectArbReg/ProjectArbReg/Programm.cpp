@@ -27,10 +27,22 @@ void main(array<String^>^ args)
 		{
 			ProjectArbReg::AdminLogForm adminLogForm;
 			adminLogForm.ShowDialog(); 
+			Admin^ admin = adminLogForm.admin;
 			if (adminLogForm.back_ToMain)
 			{
 				continue;
 			}
+			if (adminLogForm.back_ToLogin)
+			{
+				adminLogForm.ShowDialog();
+			}
+			if (admin!=nullptr)
+			{
+				ProjectArbReg::RegisterForm registerForm;
+				registerForm.ShowDialog();
+
+			}
+
 		}
 
 

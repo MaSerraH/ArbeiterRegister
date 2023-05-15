@@ -21,11 +21,12 @@ Class ProjectArbReg.AdminLogForm: AutoLayout, AnsiClass, Class, Public, BeforeFi
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean back_ToMain : Public
+    Admin admin : Public
+    Boolean back_ToLogin : Public
 Class ProjectArbReg.AdminRegForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
-    Admin admin : Public
     Boolean back_toMain : Public
 Class ProjectArbReg.mainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -33,3 +34,6 @@ Class ProjectArbReg.mainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
   Fields:
     Boolean To_adminRegForm : Public
     Boolean To_adminLogForm : Public
+Class ProjectArbReg.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
