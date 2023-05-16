@@ -22,6 +22,7 @@ void main(array<String^>^ args)
 			{
 				continue;
 			}
+
 		}
 		if (mainform.To_adminLogForm)
 		{
@@ -40,6 +41,10 @@ void main(array<String^>^ args)
 			{
 				ProjectArbReg::RegisterForm registerForm;
 				registerForm.ShowDialog();
+				if (registerForm.backToMain)
+				{
+					continue;
+				}
 
 			}
 

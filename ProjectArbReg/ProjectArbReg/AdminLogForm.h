@@ -110,12 +110,13 @@ namespace ProjectArbReg {
 			// 
 			// btn_login
 			// 
+			this->btn_login->BackColor = System::Drawing::Color::Wheat;
 			this->btn_login->Location = System::Drawing::Point(90, 203);
 			this->btn_login->Name = L"btn_login";
 			this->btn_login->Size = System::Drawing::Size(119, 49);
 			this->btn_login->TabIndex = 5;
 			this->btn_login->Text = L"login";
-			this->btn_login->UseVisualStyleBackColor = true;
+			this->btn_login->UseVisualStyleBackColor = false;
 			this->btn_login->Click += gcnew System::EventHandler(this, &AdminLogForm::btn_login_Click);
 			// 
 			// AdminLogForm
@@ -151,7 +152,7 @@ namespace ProjectArbReg {
 
 		String^ name = tbName->Text;
 		String^ passwort = tbpass->Text;
-		//	int id;
+
 		if (name->Length == 0 || passwort->Length == 0)
 		{
 			MessageBox::Show("the Fieds Name and Password are empty!", "please write something in", MessageBoxButtons::OK);
@@ -168,17 +169,9 @@ namespace ProjectArbReg {
 			if (reader->Read())
 			{
 				admin = gcnew Admin;
-				//admin->id = reader->GetInt16(0);
-				//if (admin->id>=1)
-				//{
-				//	MessageBox::Show("there´s already an admin registered", "login-Failure", MessageBoxButtons::OK);
-				//	return;
-				//}
-				//else
-				//{
 				admin->name = reader->GetString(1);
 				admin->passwort = reader->GetString(2);
-				//}
+
 				this->Close();
 			}
 			else

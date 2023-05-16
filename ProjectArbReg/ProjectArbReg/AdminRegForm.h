@@ -90,9 +90,10 @@ namespace ProjectArbReg {
 			// 
 			// btn_register
 			// 
+			this->btn_register->BackColor = System::Drawing::Color::Wheat;
 			resources->ApplyResources(this->btn_register, L"btn_register");
 			this->btn_register->Name = L"btn_register";
-			this->btn_register->UseVisualStyleBackColor = true;
+			this->btn_register->UseVisualStyleBackColor = false;
 			this->btn_register->Click += gcnew System::EventHandler(this, &AdminRegForm::btn_register_Click);
 			// 
 			// btn_back
@@ -104,9 +105,10 @@ namespace ProjectArbReg {
 			// 
 			// btn_eraseadmin
 			// 
+			this->btn_eraseadmin->BackColor = System::Drawing::SystemColors::Info;
 			resources->ApplyResources(this->btn_eraseadmin, L"btn_eraseadmin");
 			this->btn_eraseadmin->Name = L"btn_eraseadmin";
-			this->btn_eraseadmin->UseVisualStyleBackColor = true;
+			this->btn_eraseadmin->UseVisualStyleBackColor = false;
 			this->btn_eraseadmin->Click += gcnew System::EventHandler(this, &AdminRegForm::btn_eraseadmin_Click);
 			// 
 			// AdminRegForm
@@ -126,67 +128,91 @@ namespace ProjectArbReg {
 
 		}
 #pragma endregion
-	//public: Admin^ admin = nullptr;
+	public: Admin^ admin = nullptr;
 	public: bool back_toMain = false;
 	private: System::Void btn_register_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ name = this->tb1->Text;
 		String^ passwort = this->tb2->Text;
 
+
 		if (name->Length == 0 || passwort->Length == 0)
 		{
 			MessageBox::Show("the fields Name and Passwort are empty!", "please write the information!", MessageBoxButtons::OK);
 			return;
 		}
-		try
-		{
-			sqlconn->Open();
 
-			String^ query = "declare @pass nvarchar(20) set @pass = convert(nvarchar(32), HashBytes('MD5', '" + passwort + "'), 2) insert into adminLogin(Name, Passwort)" + "values('" + name + "', @pass)";
+			else
+			{
+				try
+				{
+					sqlconn->Open();
 
-			SqlCommand^ sqlcmd = gcnew SqlCommand(query, sqlconn);
-			sqlcmd->ExecuteNonQuery();
+					String^ query = "select * from adminLogin where Id = 1";
 
-		}
-		catch (Exception^ ex)
-		{
-			MessageBox::Show("the Connection with the DB failed!", "Connection Failure", MessageBoxButtons::OK);
-		}
-		finally
-		{
-			sqlconn->Close();
-			Reset();
-			MessageBox::Show("the Admin " + name + " has been register!", "Sucess!", MessageBoxButtons::OK);
-		}
+					SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+					SqlDataReader^ reader = cmd->ExecuteReader();
+					if (reader->Read())
+					{
+						MessageBox::Show("sorry!! there´s already an admin registered", "login-Failure", MessageBoxButtons::OK);
+				
+						this->back_toMain = true;
+						this->Close();
+					}
+					else
+					{
+						reader->Close();
+						String^ query1 = "declare @pass nvarchar(20) set @pass = convert(nvarchar(32), HashBytes('MD5', '" + passwort + "'), 2) insert into adminLogin(Name, Passwort)" + "values('" + name + "', @pass)";
+
+						SqlCommand^ sqlcmd = gcnew SqlCommand(query1, sqlconn);
+						sqlcmd->ExecuteNonQuery();
+						MessageBox::Show("the Admin " + name + " has been register!", "Sucess!", MessageBoxButtons::OK);
+					}
+
+				}
+				catch (Exception^ ex)
+				{
+					MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					Application::Exit();
+				}
+				finally
+				{
+					sqlconn->Close();
+					Reset();
+					
+				}
+			}
+
+
 	}
 
 	private: System::Void btn_back_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->back_toMain = true;
 		this->Close();
 	}
-private: System::Void btn_eraseadmin_Click(System::Object^ sender, System::EventArgs^ e) {
-	try
-	{
-		sqlconn->Open();
-		String^ query = "truncate table adminLogin";
-		SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
-		cmd->ExecuteNonQuery();
+	private: System::Void btn_eraseadmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		try
+		{
+			sqlconn->Open();
+			String^ query = "truncate table adminLogin";
+			SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+			cmd->ExecuteNonQuery();
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show(ex->Message, "Register failure", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+		}
+		finally
+		{
+			sqlconn->Close();
+			Reset();
+			MessageBox::Show("The table Admin has been cleaned", "there´s no Admn", MessageBoxButtons::OK);
+		}
 	}
-	catch (Exception^ ex)
+	private: void Reset()
 	{
-		MessageBox::Show(ex->Message, "Register failure", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+		this->tb1->Text = "";
+		this->tb2->Text = "";
 	}
-	finally
-	{
-		sqlconn->Close();
-		Reset();
-		MessageBox::Show("The table Admin has been cleaned", "there´s no Admn", MessageBoxButtons::OK);
-	}
-}
-	   private: void Reset()
-	   {
-		   this->tb1->Text = "";
-		   this->tb2->Text = "";
-	   }
-};
+	};
 }

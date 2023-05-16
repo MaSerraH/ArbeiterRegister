@@ -1,6 +1,7 @@
   ProjectArbReg.AdminLogForm.resources - Embedded, ContainedInManifestFile, 
   ProjectArbReg.AdminRegForm.resources - Embedded, ContainedInManifestFile, 
   ProjectArbReg.mainForm.resources - Embedded, ContainedInManifestFile, 
+  ProjectArbReg.RegisterForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly ProjectArbReg, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -27,6 +28,7 @@ Class ProjectArbReg.AdminRegForm: AutoLayout, AnsiClass, Class, Public, BeforeFi
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
+    Admin admin : Public
     Boolean back_toMain : Public
 Class ProjectArbReg.mainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -37,3 +39,5 @@ Class ProjectArbReg.mainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
 Class ProjectArbReg.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean backToMain : Public

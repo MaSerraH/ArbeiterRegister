@@ -61,16 +61,18 @@ namespace ProjectArbReg {
 			// 
 			// btnEscape
 			// 
+			this->btnEscape->BackColor = System::Drawing::Color::Wheat;
 			this->btnEscape->Location = System::Drawing::Point(67, 172);
 			this->btnEscape->Name = L"btnEscape";
 			this->btnEscape->Size = System::Drawing::Size(100, 45);
 			this->btnEscape->TabIndex = 0;
 			this->btnEscape->Text = L"exit";
-			this->btnEscape->UseVisualStyleBackColor = true;
+			this->btnEscape->UseVisualStyleBackColor = false;
 			this->btnEscape->Click += gcnew System::EventHandler(this, &mainForm::btnEscape_Click);
 			// 
 			// ToadminRegForm
 			// 
+			this->ToadminRegForm->LinkColor = System::Drawing::Color::DarkSlateGray;
 			this->ToadminRegForm->Location = System::Drawing::Point(45, 43);
 			this->ToadminRegForm->Name = L"ToadminRegForm";
 			this->ToadminRegForm->Size = System::Drawing::Size(231, 57);
@@ -81,6 +83,7 @@ namespace ProjectArbReg {
 			// 
 			// linkLabel1
 			// 
+			this->linkLabel1->LinkColor = System::Drawing::Color::Maroon;
 			this->linkLabel1->Location = System::Drawing::Point(45, 100);
 			this->linkLabel1->Name = L"linkLabel1";
 			this->linkLabel1->Size = System::Drawing::Size(155, 37);

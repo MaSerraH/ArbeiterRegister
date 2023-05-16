@@ -4,3 +4,4 @@ C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\
 C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.vcxproj.GenerateResource.cache
 C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.AdminRegForm.resources
 C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.AdminLogForm.resources
+C:\Users\Mauricio\source\repos\ArbeiterRegister\ProjectArbReg\ProjectArbReg\x64\Debug\ProjectArbReg.RegisterForm.resources
