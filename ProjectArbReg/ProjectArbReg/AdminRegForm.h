@@ -130,66 +130,61 @@ namespace ProjectArbReg {
 #pragma endregion
 	public: Admin^ admin = nullptr;
 	public: bool back_toMain = false;
+	//this function allows the user to register an Administrator in the DB, it only allows one Administrator to be registered
 	private: System::Void btn_register_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ name = this->tb1->Text;
 		String^ passwort = this->tb2->Text;
-
-
 		if (name->Length == 0 || passwort->Length == 0)
 		{
 			MessageBox::Show("the fields Name and Passwort are empty!", "please write the information!", MessageBoxButtons::OK);
 			return;
 		}
-
-			else
+		else
+		{
+			try
 			{
-				try
+				sqlconn->Open();
+
+				String^ query = "select * from adminLogin where Id = 1";
+
+				SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+				SqlDataReader^ reader = cmd->ExecuteReader();
+				if (reader->Read())
 				{
-					sqlconn->Open();
+					MessageBox::Show("sorry!! there´s already an admin registered", "login-Failure", MessageBoxButtons::OK);
 
-					String^ query = "select * from adminLogin where Id = 1";
-
-					SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
-					SqlDataReader^ reader = cmd->ExecuteReader();
-					if (reader->Read())
-					{
-						MessageBox::Show("sorry!! there´s already an admin registered", "login-Failure", MessageBoxButtons::OK);
-				
-						this->back_toMain = true;
-						this->Close();
-					}
-					else
-					{
-						reader->Close();
-						String^ query1 = "declare @pass nvarchar(20) set @pass = convert(nvarchar(32), HashBytes('MD5', '" + passwort + "'), 2) insert into adminLogin(Name, Passwort)" + "values('" + name + "', @pass)";
-
-						SqlCommand^ sqlcmd = gcnew SqlCommand(query1, sqlconn);
-						sqlcmd->ExecuteNonQuery();
-						MessageBox::Show("the Admin " + name + " has been register!", "Sucess!", MessageBoxButtons::OK);
-					}
-
+					this->back_toMain = true;
+					this->Close();
 				}
-				catch (Exception^ ex)
+				else
 				{
-					MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
-					Application::Exit();
-				}
-				finally
-				{
-					sqlconn->Close();
-					Reset();
-					
+					reader->Close();
+					String^ query1 = "declare @pass nvarchar(20) set @pass = convert(nvarchar(32), HashBytes('MD5', '" + passwort + "'), 2) insert into adminLogin(Name, Passwort)" + "values('" + name + "', @pass)";
+
+					SqlCommand^ sqlcmd = gcnew SqlCommand(query1, sqlconn);
+					sqlcmd->ExecuteNonQuery();
+					MessageBox::Show("the Admin " + name + " has been register!", "Sucess!", MessageBoxButtons::OK);
 				}
 			}
-
-
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				Application::Exit();
+			}
+			finally
+			{
+				sqlconn->Close();
+				Reset();
+			}
+		}
 	}
-
+	//this function sends the user back to the main page
 	private: System::Void btn_back_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->back_toMain = true;
 		this->Close();
 	}
+	//with this function will the administrator from the DB deleted, at the same time the table will be reseted
 	private: System::Void btn_eraseadmin_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
@@ -209,6 +204,7 @@ namespace ProjectArbReg {
 			MessageBox::Show("The table Admin has been cleaned", "there´s no Admn", MessageBoxButtons::OK);
 		}
 	}
+	//the textboxes will be emptied after this.
 	private: void Reset()
 	{
 		this->tb1->Text = "";

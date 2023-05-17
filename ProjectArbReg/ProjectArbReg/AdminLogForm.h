@@ -68,7 +68,7 @@ namespace ProjectArbReg {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(49, 74);
+			this->label1->Location = System::Drawing::Point(40, 34);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(79, 26);
 			this->label1->TabIndex = 0;
@@ -77,7 +77,7 @@ namespace ProjectArbReg {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(54, 138);
+			this->label2->Location = System::Drawing::Point(12, 94);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(124, 26);
 			this->label2->TabIndex = 1;
@@ -85,14 +85,14 @@ namespace ProjectArbReg {
 			// 
 			// tbName
 			// 
-			this->tbName->Location = System::Drawing::Point(188, 79);
+			this->tbName->Location = System::Drawing::Point(157, 31);
 			this->tbName->Name = L"tbName";
 			this->tbName->Size = System::Drawing::Size(234, 34);
 			this->tbName->TabIndex = 2;
 			// 
 			// tbpass
 			// 
-			this->tbpass->Location = System::Drawing::Point(205, 138);
+			this->tbpass->Location = System::Drawing::Point(157, 94);
 			this->tbpass->Name = L"tbpass";
 			this->tbpass->PasswordChar = '$';
 			this->tbpass->Size = System::Drawing::Size(217, 34);
@@ -100,7 +100,7 @@ namespace ProjectArbReg {
 			// 
 			// btn_back
 			// 
-			this->btn_back->Location = System::Drawing::Point(274, 205);
+			this->btn_back->Location = System::Drawing::Point(232, 171);
 			this->btn_back->Name = L"btn_back";
 			this->btn_back->Size = System::Drawing::Size(95, 47);
 			this->btn_back->TabIndex = 4;
@@ -111,7 +111,7 @@ namespace ProjectArbReg {
 			// btn_login
 			// 
 			this->btn_login->BackColor = System::Drawing::Color::Wheat;
-			this->btn_login->Location = System::Drawing::Point(90, 203);
+			this->btn_login->Location = System::Drawing::Point(63, 169);
 			this->btn_login->Name = L"btn_login";
 			this->btn_login->Size = System::Drawing::Size(119, 49);
 			this->btn_login->TabIndex = 5;
@@ -123,7 +123,7 @@ namespace ProjectArbReg {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(13, 26);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(451, 297);
+			this->ClientSize = System::Drawing::Size(451, 263);
 			this->Controls->Add(this->btn_login);
 			this->Controls->Add(this->btn_back);
 			this->Controls->Add(this->tbpass);
@@ -142,12 +142,14 @@ namespace ProjectArbReg {
 		}
 #pragma endregion
 	public: bool back_ToMain = false;
+	//this sends he user back to the main page
 	private: System::Void btn_back_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->back_ToMain = true;
 		this->Close();
 	}
 	public: Admin^ admin = nullptr;
 	public: bool back_ToLogin = false;
+	//this function allows the administrator to login into his account
 	private: System::Void btn_login_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ name = tbName->Text;
@@ -158,7 +160,6 @@ namespace ProjectArbReg {
 			MessageBox::Show("the Fieds Name and Password are empty!", "please write something in", MessageBoxButtons::OK);
 			return;
 		}
-
 		try
 		{
 			sqlconn->Open();
@@ -179,14 +180,12 @@ namespace ProjectArbReg {
 				MessageBox::Show("the User " + name + " doesn´t exist!", "Error", MessageBoxButtons::OK);
 				Reset();
 				this->back_ToLogin = true;
-
 			}
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			Application::Exit();
-
 		}
 		finally
 		{

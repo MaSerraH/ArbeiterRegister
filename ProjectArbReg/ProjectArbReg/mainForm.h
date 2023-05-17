@@ -112,6 +112,7 @@ namespace ProjectArbReg {
 #pragma endregion
 	public: bool To_adminRegForm = false;
 	public: bool To_adminLogForm = false;
+	// this function allows to close the application
 	private: System::Void btnEscape_Click(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::DialogResult Exit;
 		Exit = MessageBox::Show("Do you really want to close the application?", "Arb_Reg", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
@@ -120,11 +121,12 @@ namespace ProjectArbReg {
 			Application::Exit();
 		}
 	}
+	//this functions sends the user back to the administrtaor register page 
 	private: System::Void ToadminRegLogForm_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 		this->To_adminRegForm = true;
 		this->Close();
 	}
-		   
+	//this functions sends the user back to the administrtaor login page 	   
 	private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 		this->To_adminLogForm = true;
 		this->Close();

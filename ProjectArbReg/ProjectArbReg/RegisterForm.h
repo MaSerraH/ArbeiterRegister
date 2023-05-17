@@ -10,6 +10,7 @@ namespace ProjectArbReg {
 	using namespace System::Drawing;
 	using namespace SqlClient;
 	using namespace Sql;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for RegisterForm
@@ -105,7 +106,7 @@ namespace ProjectArbReg {
 			// 
 			// dataGridView1
 			// 
-			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeight = 29;
 			this->dataGridView1->Location = System::Drawing::Point(28, 213);
@@ -232,72 +233,79 @@ namespace ProjectArbReg {
 			// 
 			// btnAdd
 			// 
+			this->btnAdd->BackColor = System::Drawing::Color::Wheat;
 			this->btnAdd->Location = System::Drawing::Point(981, 37);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(173, 38);
 			this->btnAdd->TabIndex = 15;
 			this->btnAdd->Text = L"add Worker()";
-			this->btnAdd->UseVisualStyleBackColor = true;
+			this->btnAdd->UseVisualStyleBackColor = false;
 			this->btnAdd->Click += gcnew System::EventHandler(this, &RegisterForm::btnAdd_Click);
 			// 
 			// btnDelete
 			// 
+			this->btnDelete->BackColor = System::Drawing::Color::Wheat;
 			this->btnDelete->Location = System::Drawing::Point(981, 89);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(187, 40);
 			this->btnDelete->TabIndex = 16;
 			this->btnDelete->Text = L"delete Worker()";
-			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->UseVisualStyleBackColor = false;
 			this->btnDelete->Click += gcnew System::EventHandler(this, &RegisterForm::btnDelete_Click);
 			// 
 			// btnUpdate
 			// 
+			this->btnUpdate->BackColor = System::Drawing::Color::Wheat;
 			this->btnUpdate->Location = System::Drawing::Point(981, 154);
 			this->btnUpdate->Name = L"btnUpdate";
 			this->btnUpdate->Size = System::Drawing::Size(187, 34);
 			this->btnUpdate->TabIndex = 17;
 			this->btnUpdate->Text = L"update Table()";
-			this->btnUpdate->UseVisualStyleBackColor = true;
+			this->btnUpdate->UseVisualStyleBackColor = false;
 			this->btnUpdate->Click += gcnew System::EventHandler(this, &RegisterForm::btnUpdate_Click);
 			// 
 			// btnExport
 			// 
+			this->btnExport->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->btnExport->Location = System::Drawing::Point(1203, 37);
 			this->btnExport->Name = L"btnExport";
 			this->btnExport->Size = System::Drawing::Size(162, 38);
 			this->btnExport->TabIndex = 18;
 			this->btnExport->Text = L"export Table()";
-			this->btnExport->UseVisualStyleBackColor = true;
+			this->btnExport->UseVisualStyleBackColor = false;
 			this->btnExport->Click += gcnew System::EventHandler(this, &RegisterForm::btnExport_Click);
 			// 
 			// btnBackMain
 			// 
+			this->btnBackMain->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->btnBackMain->Location = System::Drawing::Point(1203, 93);
 			this->btnBackMain->Name = L"btnBackMain";
 			this->btnBackMain->Size = System::Drawing::Size(186, 42);
 			this->btnBackMain->TabIndex = 19;
 			this->btnBackMain->Text = L"back to Main()";
-			this->btnBackMain->UseVisualStyleBackColor = true;
+			this->btnBackMain->UseVisualStyleBackColor = false;
 			this->btnBackMain->Click += gcnew System::EventHandler(this, &RegisterForm::btnBackMain_Click);
 			// 
 			// btnExit
 			// 
+			this->btnExit->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->btnExit->Location = System::Drawing::Point(1203, 154);
 			this->btnExit->Name = L"btnExit";
 			this->btnExit->Size = System::Drawing::Size(144, 34);
 			this->btnExit->TabIndex = 20;
 			this->btnExit->Text = L"exit()";
-			this->btnExit->UseVisualStyleBackColor = true;
+			this->btnExit->UseVisualStyleBackColor = false;
 			this->btnExit->Click += gcnew System::EventHandler(this, &RegisterForm::btnExit_Click);
 			// 
 			// btnReset
 			// 
+			this->btnReset->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->btnReset->Location = System::Drawing::Point(569, 706);
 			this->btnReset->Name = L"btnReset";
 			this->btnReset->Size = System::Drawing::Size(176, 42);
 			this->btnReset->TabIndex = 21;
 			this->btnReset->Text = L"reset Table()";
-			this->btnReset->UseVisualStyleBackColor = true;
+			this->btnReset->UseVisualStyleBackColor = false;
 			this->btnReset->Click += gcnew System::EventHandler(this, &RegisterForm::btnReset_Click);
 			// 
 			// RegisterForm
@@ -340,6 +348,7 @@ namespace ProjectArbReg {
 		}
 #pragma endregion
 	public: bool backToMain = false;
+	//this private function retrieves the Data from DB, and shows it to the User
 	private: System::Void getData()
 	{
 		try
@@ -366,7 +375,6 @@ namespace ProjectArbReg {
 	private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		try
 		{
-			sqlconn->Open();
 			labelID->Text = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
 			tb1->Text = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
 			tb2->Text = dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString();
@@ -374,28 +382,24 @@ namespace ProjectArbReg {
 			tb4->Text = dataGridView1->SelectedRows[0]->Cells[4]->Value->ToString();
 			tb5->Text = dataGridView1->SelectedRows[0]->Cells[5]->Value->ToString();
 			tb6->Text = dataGridView1->SelectedRows[0]->Cells[6]->Value->ToString();
+
 		}
 		catch (Exception^ ex)
 		{
 			MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			Application::Exit();
-		}
-		finally
-		{
-			sqlconn->Close();
-			Reset();
 		}
 	}
-		   private: System::Void Reset()
-		   {
-			   this->labelID->Text = "...";
-			   this->tb1->Text = "";
-			   this->tb2->Text = "";
-			   this->tb3->Text = "";
-			   this->tb4->Text = "";
-			   this->tb5->Text = "";
-			   this->tb6->Text = "";
-		   }
+	private: System::Void Reset()
+	{
+		this->labelID->Text = "...";
+		this->tb1->Text = "";
+		this->tb2->Text = "";
+		this->tb3->Text = "";
+		this->tb4->Text = "";
+		this->tb5->Text = "";
+		this->tb6->Text = "";
+	}
+	//this function allows the user to register an employee
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 		try
 		{
@@ -423,11 +427,87 @@ namespace ProjectArbReg {
 			getData();
 		}
 	}
+	//this function allows to delete an employee
 private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	try
+	{
+		String^ id = labelID->Text;
+		sqlconn->Open();
+		String^ query = "delete from workerRegister where Id = '" + id + "'";
+		SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+		cmd->ExecuteNonQuery();
+		MessageBox::Show("the Worker has been deleted!", "Application", MessageBoxButtons::OK);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		Application::Exit();
+	}
+	finally
+	{
+		sqlconn->Close();
+		Reset();
+		getData();
+	}
 }
+	   //this function allows to update the Information of an employee
 private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		sqlconn->Open();
+		String^ id = labelID->Text;
+		String^ firstName = tb1->Text;
+		String^ lastName = tb2->Text;
+		String^ age = tb3->Text;
+		String^ phoneNumber = tb4->Text;
+		String^ address = tb5->Text;
+		String^ profession = tb6->Text;
+
+		String^ query = "update workerRegister set FirstName = '" + firstName + "', LastName = '" + lastName + "', Age = '" + age + "', PhoneNumber = '" + phoneNumber + "', Address = '" + address + "', Profession = '" + profession + "' where Id = '" + id + "'";
+		SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		Application::Exit();
+	}
+	finally
+	{
+		sqlconn->Close();
+		Reset();
+		getData();
+	}
 }
+	 //this function allows the Information in the DB to be exported as a .csv file
 private: System::Void btnExport_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		sqlconn->Open();
+		String^ query = "select * from workerRegister";
+		StreamWriter^ file = gcnew StreamWriter("C:/Users/Mauricio/Desktop/export/daten.csv");
+		SqlCommand^ cmd = gcnew SqlCommand(query, sqlconn);
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		while (reader->Read())
+		{
+			file->WriteLine(reader->GetName(0) + ";" + reader->GetName(1) + ";" + reader->GetName(2) + ";" + reader->GetName(3) + ";" + reader->GetName(4) + ";" + reader->GetName(5) + ";" + reader->GetName(6));
+			file->WriteLine(reader[0]->ToString() + ";" + reader[1]->ToString() + ";" + reader[2]->ToString() + ";" + reader[3]->ToString() + ";" + reader[4]->ToString() + ";" + reader[5]->ToString() + ";" + reader[6]->ToString());
+		}
+		reader->Close();
+		file->Close();
+		MessageBox::Show("the Table has been exported!", "Information", MessageBoxButtons::OK);
+	}
+	catch (Exception^ ex)
+	{
+		MessageBox::Show(ex->Message, "Application", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+	}
+	finally
+	{
+		sqlconn->Close();
+	}
 }
 private: System::Void btnBackMain_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->backToMain = true;
@@ -441,6 +521,7 @@ private: System::Void btnExit_Click(System::Object^ sender, System::EventArgs^ e
 		Application::Exit();
 	}
 }
+	   //this function allows the table to be reseted
 private: System::Void btnReset_Click(System::Object^ sender, System::EventArgs^ e) {
 	try
 	{
